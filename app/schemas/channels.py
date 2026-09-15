@@ -3,6 +3,7 @@ from pydantic import BaseModel, Field
 
 
 class ChannelCreate(BaseModel):
+    user_id: int
     handle: str = Field(min_length=1, max_length=30)
     name: str = Field(min_length=1, max_length=100)
     description: str | None = None
@@ -12,6 +13,7 @@ class ChannelCreate(BaseModel):
 
 
 class ChannelUpdate(BaseModel):
+    user_id: int
     handle: str | None = Field(default=None, min_length=1, max_length=30)
     name: str | None = Field(default=None, min_length=1, max_length=100)
     description: str | None = None
@@ -32,5 +34,5 @@ class ChannelResponse(BaseModel):
     is_verified: bool
     featured_video_id: int | None
     created_at: datetime
-    updated_at: datetime
+    updated_at: datetime | None
     deleted_at: datetime | None

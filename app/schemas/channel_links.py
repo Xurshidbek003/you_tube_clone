@@ -2,12 +2,14 @@ from pydantic import BaseModel,  Field
 
 
 class ChannelLinkCreate(BaseModel):
+    channel_id: int
     title: str = Field(max_length=60)
     url: str
     position: int
 
 
 class ChannelLinkUpdate(BaseModel):
+    channel_id: int
     title: str | None = Field(default=None, max_length=60)
     url: str | None = None
     position: int | None = None
