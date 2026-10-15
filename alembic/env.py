@@ -1,14 +1,14 @@
 from logging.config import fileConfig
-
 from sqlalchemy import engine_from_config
 from sqlalchemy import pool
-
 from alembic import context
 
 from app.models.channels import Channel
 from app.models.channel_links import ChannelLink
 from app.models.channel_stats import ChannelStats
 from app.models.subscriptions import Subscription
+from app.models.users import User
+
 from app.database.base import Base
 
 # this is the Alembic Config object, which provides
