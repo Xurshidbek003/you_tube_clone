@@ -1,16 +1,16 @@
-import os
 from fastapi import APIRouter, Request, HTTPException
 from fastapi_sso.sso.google import GoogleSSO
 from sqlalchemy import select
 from app.database.base import MyDb
 from app.models.users import User
+from app.utils.config import settings
 from app.utils.security import create_access_token
 
 router = APIRouter(prefix="/auth/google", tags=["Google Auth"])
 
 sso = GoogleSSO(
-    client_id=os.getenv("GOOGLE_CLIENT_ID"),
-    client_secret=os.getenv("GOOGLE_CLIENT_SECRET"),
+    client_id=settings.GOOGLE_CLIENT_ID,
+    client_secret=settings.GOOGLE_CLIENT_SECRET,
     redirect_uri="http://localhost:8000/auth/google/callback",
     allow_insecure_http=True
 )
